@@ -37,7 +37,7 @@ private fun loadDate() {
         .enqueue(object : Callback<HttpItem>{
             override fun onResponse(call: Call<HttpItem>, response: Response<HttpItem>) {
                 if(response.isSuccessful){
-                    val httpData : HttpItem? = response.body()
+                    //test branch
                 }
             }
 
