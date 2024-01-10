@@ -31,7 +31,7 @@ class HttpAdapter constructor(val context : Context, val dataSet : ArrayList<Htt
     override fun onBindViewHolder(holder: VH, position: Int) {
         //dataSet의 position에 맞게 요소들을 가져온다.
         //요소들을 재배치한다.
-        holder.title.text = dataSet[position].title
+        holder.title.text = dataSet[position].stationName
     }
 
 

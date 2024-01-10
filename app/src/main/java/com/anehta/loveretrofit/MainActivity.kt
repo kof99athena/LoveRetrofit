@@ -2,9 +2,16 @@ package com.anehta.loveretrofit
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.anehta.loveretrofit.databinding.ActivityMainBinding
 import com.google.android.material.carousel.CarouselLayoutManager
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import retrofit2.Retrofit
 
 class MainActivity : AppCompatActivity() {
@@ -15,17 +22,29 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val httpList = ArrayList<HttpItem>()
-//        httpList.add(HttpItem("a"))
-//        httpList.add(HttpItem("b"))
-//        httpList.add(HttpItem("c"))
-//        httpList.add(HttpItem("d"))
-//        httpList.add(HttpItem("e"))
-//        httpList.add(HttpItem("f"))
-//        httpList.add(HttpItem("g"))
-//        httpList.add(HttpItem("h"))
 
         binding.recyclerView.adapter = HttpAdapter(this,httpList)
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
 
+        loadDate()
     }
+}
+
+private fun loadDate() {
+    val service = HttpClient.httpService
+
+    service.getHttpTitle("4b467053477a78703435654b717962")
+        .enqueue(object : Callback<HttpItem>{
+            override fun onResponse(call: Call<HttpItem>, response: Response<HttpItem>) {
+                if(response.isSuccessful){
+                    val httpData : HttpItem? = response.body()
+                }
+            }
+
+            override fun onFailure(call: Call<HttpItem>, t: Throwable) {
+                Log.d("TAG",t.message.toString())
+            }
+
+        })
+
 }
