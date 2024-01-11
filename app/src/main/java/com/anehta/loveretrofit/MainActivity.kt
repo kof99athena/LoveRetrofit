@@ -23,21 +23,26 @@ class MainActivity : AppCompatActivity() {
 
         val httpList = ArrayList<HttpItem>()
 
+        loadDate()
         binding.recyclerView.adapter = HttpAdapter(this,httpList)
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
 
-        loadDate()
+
     }
 }
 
 private fun loadDate() {
-    val service = HttpClient.httpService
+    val service = HttpClient.instance
 
     service.getHttpTitle("4b467053477a78703435654b717962")
         .enqueue(object : Callback<HttpItem>{
             override fun onResponse(call: Call<HttpItem>, response: Response<HttpItem>) {
                 if(response.isSuccessful){
-                    val httpData : HttpItem? = response.body()
+                    if (response.code() ==200 ){
+                        val title = response.body()?.stationName
+
+
+                    }
                 }
             }
 
