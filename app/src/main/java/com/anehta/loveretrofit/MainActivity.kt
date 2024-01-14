@@ -47,6 +47,13 @@ class MainActivity : AppCompatActivity() {
                 // withContext를 사용하여 IO 쓰레드에서 Retrofit 호출
                 val response = withContext(Dispatchers.IO) {
                     service.getHttpTitle("4b467053477a78703435654b717962")
+
+    service.getHttpTitle("4b467053477a78703435654b717962")
+        .enqueue(object : Callback<HttpItem>{
+            override fun onResponse(call: Call<HttpItem>, response: Response<HttpItem>) {
+                if(response.isSuccessful){
+                    //test branch
+
                 }
 
                 // onResponse를 비구조화하여 사용
