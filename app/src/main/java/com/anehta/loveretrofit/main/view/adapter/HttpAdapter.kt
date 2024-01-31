@@ -1,4 +1,4 @@
-package com.anehta.loveretrofit
+package com.anehta.loveretrofit.main.view.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
+import com.anehta.loveretrofit.api.HttpItem
 import com.anehta.loveretrofit.databinding.RecyclerItemBinding
 
 class HttpAdapter constructor(val context : Context, val dataSet : ArrayList<HttpItem>) : Adapter<HttpAdapter.VH>() {

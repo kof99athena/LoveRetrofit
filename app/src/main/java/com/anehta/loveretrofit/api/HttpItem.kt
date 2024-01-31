@@ -1,4 +1,4 @@
-package com.anehta.loveretrofit
+package com.anehta.loveretrofit.api
 
 import com.google.gson.annotations.SerializedName
 
